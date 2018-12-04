@@ -29,7 +29,7 @@ try {
 						
 						//찾는 값이 있을때
 						if(name === paramI[0]) {
-							result = decodeURIComponent(paramI[1].replace(/\+/g, ' '));
+							result = paramI[1];
 							break;
 						}
 					}
