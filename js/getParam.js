@@ -29,7 +29,15 @@ try {
 						
 						//찾는 값이 있을때
 						if(name === paramI[0]) {
-							result = paramI[1];
+							var valueI = paramI[1] || '';
+							
+							result = decodeURIComponent(valueI);
+
+							//인코딩된 값일 때
+							if(valueI !== result) {
+								result = decodeURIComponent(valueI.replace(/\+/g, '%20'));
+							}
+
 							break;
 						}
 					}
