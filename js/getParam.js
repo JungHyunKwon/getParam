@@ -27,14 +27,12 @@ try {
 					for(var i = 0, paramLength = param.length; i < paramLength; i++) {
 						var paramI = param[i].split('=');
 						
-						//찾는 값이 있을때
+						//찾는 값이 있을 때
 						if(name === paramI[0]) {
-							var valueI = paramI[1] || '';
+							var valueI = paramI[1];
 							
-							result = decodeURIComponent(valueI);
-
-							//인코딩된 값일 때
-							if(valueI !== result) {
+							//값이 있을 때
+							if(valueI) {
 								result = decodeURIComponent(valueI.replace(/\+/g, '%20'));
 							}
 
