@@ -5,6 +5,16 @@
 try {
 	(function() {
 		'use strict';
+		
+		/**
+		 * @name URI 구성 요소 디코딩
+		 * @param {string} value
+		 * @return {string}
+		 * @since 2018-07-13
+		 */
+		function _decodeURIComponent(value) {
+			return (typeof value === 'string') ? decodeURIComponent(value.replace(/\+/g, '%20')) : '';
+		}
 
 		/**
 		 * @name getParam
@@ -33,7 +43,13 @@ try {
 							
 							//값이 있을 때
 							if(valueI) {
-								result = decodeURIComponent(valueI.replace(/\+/g, '%20'));
+								do {
+									valueI = _decodeURIComponent(valueI);
+									result = _decodeURIComponent(valueI);
+								}
+								
+								//i번째 값과 결과가 다를 때
+								while(valueI !== result);
 							}
 
 							break;
