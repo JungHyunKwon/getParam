@@ -33,22 +33,30 @@
 			if(typeof name === 'string' && search) {
 				search = search.split('&');
 
-				for(var i = 0, searchLength = search.length; i < searchLength; i++) {
+				for(var i = 0, searchLength = search.length, lastI = searchLength - 1; i < searchLength; i++) {
 					var params = search[i].split('=');
 					
 					//값이 같을 때
 					if(name === params[0]) {
 						var param = params[1];
-						
+
 						//값이 있을 때
 						if(param) {
-							do {
-								param = _decodeURIComponent(param);
-								result = _decodeURIComponent(param);
+							//마지막일 때
+							if(lastI === i) {
+								param = param.split('#')[0];
 							}
 							
-							//값이 다를 때
-							while(param !== result);
+							//값이 있을 때
+							if(param) {
+								do {
+									param = _decodeURIComponent(param);
+									result = _decodeURIComponent(param);
+								}
+								
+								//값이 다를 때
+								while(param !== result);
+							}
 						}
 
 						break;
