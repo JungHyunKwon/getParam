@@ -17,11 +17,11 @@
 		
 		//문자일 때
 		if(typeof url === 'string') {
-			var query = url.split('?')[1];
+			var query = url.split('#')[0].split('?')[1];
 
 			//값이 있을 때
 			if(query) {
-				query = query.split('#')[0].split('&');
+				query = query.split('&');
 
 				for(var i = 0, queryLength = query.length; i < queryLength; i++) {
 					var param = query[i].split('=');
